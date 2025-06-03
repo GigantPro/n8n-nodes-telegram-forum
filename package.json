@@ -1,0 +1,22 @@
+{
+  "name": "n8n-nodes-telegram-forum",
+  "version": "1.0.0",
+  "description": "Custom n8n node to create Telegram forum topics via Bot API",
+  "author": "GigantPro <pochtagigantpro@gmail.com>",
+  "license": "MIT",
+  "main": "dist/TelegramForumTopic.node.js",
+  "types": "dist/TelegramForumTopic.node.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "n8n-core": "^1.0.0",
+    "n8n-workflow": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  }
+}

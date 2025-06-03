@@ -1,0 +1,46 @@
+{
+  "displayName": "Telegram: Create Forum Topic",
+  "name": "telegramForumTopic",
+  "group": ["transform"],
+  "version": 1,
+  "description": "Создаёт новый топик-форум в супергруппе Telegram через Bot API",
+  "defaults": {
+    "name": "Telegram Forum Topic",
+    "color": "#00AECB"
+  },
+  "inputs": ["main"],
+  "outputs": ["main"],
+  "credentials": [
+    {
+      "name": "telegramApi",
+      "required": true
+    }
+  ],
+  "properties": [
+    {
+      "displayName": "Chat ID",
+      "name": "chatId",
+      "type": "string",
+      "default": "",
+      "placeholder": "e.g. -1001234567890",
+      "required": true,
+      "description": "Идентификатор супергруппы, где создаётся топик"
+    },
+    {
+      "displayName": "Title",
+      "name": "title",
+      "type": "string",
+      "default": "",
+      "required": true,
+      "description": "Заголовок нового форума-топика (не может быть пустым)"
+    },
+    {
+      "displayName": "Icon Custom Emoji ID",
+      "name": "iconCustomEmojiId",
+      "type": "string",
+      "default": "",
+      "required": false,
+      "description": "ID кастомного emoji для иконки топика (если нужно)"
+    }
+  ]
+}
