@@ -28,13 +28,13 @@
     "typescript": "^4.5.4"
   },
   "keywords": [
+    "n8n-community-node-package",
     "n8n",
     "telegram",
     "forum",
     "topic",
     "bot",
     "ai-agent",
-    "n8n-node",
-    "custom-node"
+    "n8n-node"
   ]
 }
