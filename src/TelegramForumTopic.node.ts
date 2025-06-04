@@ -1,6 +1,5 @@
 import { IExecuteFunctions } from 'n8n-workflow';
 
-
 import {
 	INodeExecutionData,
 	INodeType,
@@ -16,7 +15,7 @@ export class TelegramForumTopic implements INodeType {
 		usableAsTool: true,
 		group: ['transform'],
 		version: 1,
-		description: 'Создаёт новый топик-форум в супергруппе Telegram через Bot API',
+		description: 'Creates a new forum topic in a Telegram supergroup via Bot API',
 		defaults: {
 			name: 'Telegram Forum Topic',
 			color: '#00AECB',
@@ -37,7 +36,7 @@ export class TelegramForumTopic implements INodeType {
 				default: '',
 				placeholder: 'e.g. -1001234567890',
 				required: true,
-				description: 'Идентификатор супергруппы, где создаётся топик',
+				description: 'Identifier of the supergroup where the topic will be created',
 			},
 			{
 				displayName: 'Title',
@@ -45,7 +44,7 @@ export class TelegramForumTopic implements INodeType {
 				type: 'string',
 				default: '',
 				required: true,
-				description: 'Заголовок нового форума-топика (не может быть пустым)',
+				description: 'Title of the new forum topic (cannot be empty)',
 			},
 			{
 				displayName: 'Icon Custom Emoji ID',
@@ -53,7 +52,7 @@ export class TelegramForumTopic implements INodeType {
 				type: 'string',
 				default: '',
 				required: false,
-				description: 'ID кастомного emoji для иконки топика (если нужно)',
+				description: 'Custom emoji ID for the topic icon (optional)',
 			},
 		],
 	};
@@ -64,7 +63,10 @@ export class TelegramForumTopic implements INodeType {
 
 		const credentials = await this.getCredentials('telegramApi');
 		if (!credentials || !credentials.botToken) {
-			throw new NodeOperationError(this.getNode(), 'Не удалось получить Bot Token из Telegram Credentials');
+			throw new NodeOperationError(
+				this.getNode(),
+				'Failed to retrieve Bot Token from Telegram Credentials'
+			);
 		}
 		const botToken = credentials.botToken as string;
 
@@ -92,7 +94,7 @@ export class TelegramForumTopic implements INodeType {
 			} catch (error: any) {
 				throw new NodeOperationError(
 					this.getNode(),
-					`Ошибка при вызове createForumTopic: ${error.message}`,
+					`Error calling createForumTopic: ${error.message}`
 				);
 			}
 
