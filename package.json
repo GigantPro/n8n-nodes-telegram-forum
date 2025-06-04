@@ -6,6 +6,14 @@
   "license": "MIT",
   "main": "dist/TelegramForumTopic.node.js",
   "types": "dist/TelegramForumTopic.node.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GigantPro/n8n-nodes-telegram-forum.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GigantPro/n8n-nodes-telegram-forum/issues"
+  },
+  "homepage": "https://github.com/GigantPro/n8n-nodes-telegram-forum#readme",
   "files": [
     "dist"
   ],
@@ -18,5 +26,15 @@
   },
   "devDependencies": {
     "typescript": "^4.5.4"
-  }
+  },
+  "keywords": [
+    "n8n",
+    "telegram",
+    "forum",
+    "topic",
+    "bot",
+    "ai-agent",
+    "n8n-node",
+    "custom-node"
+  ]
 }
