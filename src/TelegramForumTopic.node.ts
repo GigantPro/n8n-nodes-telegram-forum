@@ -13,6 +13,7 @@ export class TelegramForumTopic implements INodeType {
 		displayName: 'Telegram: Create Forum Topic',
 		name: 'telegramForumTopic',
 		icon: 'file:telegram.svg',
+		usableAsTool: true,
 		group: ['transform'],
 		version: 1,
 		description: 'Создаёт новый топик-форум в супергруппе Telegram через Bot API',
