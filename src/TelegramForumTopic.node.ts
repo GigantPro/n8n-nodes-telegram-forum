@@ -12,6 +12,7 @@ export class TelegramForumTopic implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Telegram: Create Forum Topic',
 		name: 'telegramForumTopic',
+		icon: 'file:telegram.svg',
 		group: ['transform'],
 		version: 1,
 		description: 'Создаёт новый топик-форум в супергруппе Telegram через Bot API',

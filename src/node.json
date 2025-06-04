@@ -1,6 +1,7 @@
 {
   "displayName": "Telegram: Create Forum Topic",
   "name": "telegramForumTopic",
+  "icon": "file:telegram.svg",
   "group": ["transform"],
   "version": 1,
   "description": "Создаёт новый топик-форум в супергруппе Telegram через Bot API",
@@ -22,7 +23,7 @@
       "name": "chatId",
       "type": "string",
       "default": "",
-      "placeholder": "e.g. -1001234567890",
+      "placeholder": "-1001234567890",
       "required": true,
       "description": "Идентификатор супергруппы, где создаётся топик"
     },
