@@ -1,32 +1,59 @@
-name: Publish to npm
+name: Publish to NPM on v* Tag
 
 on:
   push:
     tags:
-      - 'v*.*.*'     # когда пушатся теги вида v1.0.0, v1.2.3 и т.д.
+      - 'v*'   # реагируем на теги, начинающиеся с маленькой буквы v (например, v1.1.1)
 
 jobs:
   publish:
-    name: Publish package
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'         # или любую LTS-версию
-          registry-url: 'https://registry.npmjs.org'
-      
-      - name: Install dependencies
-        run: npm install
+          node-version: '16'
+          registry-url: 'https://registry.npmjs.org/'
 
-      - name: Build
-        run: npm run build
+      - name: Extract version from tag
+        id: extract_version
+        run: |
+          # GITHUB_REF = refs/tags/v1.1.1
+          TAG_NAME="${GITHUB_REF#refs/tags/}"
+          # Убираем префикс "v", остаётся "1.1.1"
+          VERSION="${TAG_NAME#v}"
+          echo "TAG_NAME=$TAG_NAME"
+          echo "VERSION=$VERSION"
+          echo "::set-output name=version::$VERSION"
+        shell: bash
+
+      - name: Update package.json version
+        run: |
+          VERSION="${{ steps.extract_version.outputs.version }}"
+          echo "Updating package.json to version $VERSION"
+          npm version "$VERSION" --no-git-tag-version
+          grep '"version":' package.json
+        shell: bash
+
+      - name: Install dependencies (optional, если нужен build)
+        run: |
+          npm install
+        shell: bash
+
+      - name: Build (optional)
+        run: |
+          npm run build
+        shell: bash
 
       - name: Publish to npm
-        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm publish --access public
+        shell: bash
